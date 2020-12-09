@@ -10,3 +10,38 @@ the -ex option means the experiment mode where the program anlyze the example gr
 ```
 example_graph = {'A': ['+', ['B', 'C'] ], 'B': ['*', ['A', 'C', 'D'] ], 'C': ['and', ['A','B','D'] ], 'D': ['+', ['B','C'] ], 'E': ['and', ['F'] ], 'F': ['or', ['E', 'C'] ]}
 ```
+sample usage :
+```
+    python graph_traverse.py -ex -d 4 -t 3
+```
+output:
+```
+for depth  1
+pattern:  {"0": ["+", []]}
+frequency:  2
+pattern:  {"0": ["and", []]}
+frequency:  2
+pattern:  {"0": ["*", []]}
+frequency:  1
+for depth  2
+pattern:  {"0": ["*", [1]], "1": ["+", [0]]}
+frequency:  2
+pattern:  {"0": ["and", [1]], "1": ["+", [0]]}
+frequency:  2
+pattern:  {"0": ["and", [1]], "1": ["*", [0]]}
+frequency:  1
+for depth  3
+pattern:  {"0": ["and", [1, 2]], "1": ["*", [0, 2]], "2": ["+", [0, 1]]}
+frequency:  2
+pattern:  {"0": ["and", [1]], "1": ["+", [0]], "2": ["or", [0]]}
+frequency:  2
+pattern:  {"0": ["*", [1, 2]], "1": ["+", [0]], "2": ["+", [0]]}
+frequency:  1
+for depth  4
+pattern:  {"0": ["and", [1]], "1": ["+", [0]], "2": ["or", [0, 3]], "3": ["and", [2]]}
+frequency:  2
+pattern:  {"0": ["and", [1, 2]], "1": ["*", [0, 2]], "2": ["+", [0, 1]], "3": ["or", [0]]}
+frequency:  2
+pattern:  {"0": ["and", [1, 2, 3]], "1": ["*", [0, 2, 3]], "2": ["+", [0, 1]], "3": ["+", [0, 1]]}
+frequency:  1
+```
